@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header-nav {
+  overflow: hidden;
+  margin: 20px;
+  padding: 10px 0px;
+  padding-bottom: 5px;
+  background-color: #8ac6d1;
+}
+
+/*  */
+.navbar-link-title {
+  float: left;
+  color: white;
+  padding: 10px 20px;
+  font-size: 17px;
+}
+
+.navbar-link {
+  float: right;
+  color: white;
+  padding: 10px 20px;
+  font-size: 15px;
+}
+
+.delete-button {
+  color: red;
+}
+
+.task_title {
+  color: red;
+}
+
+.task_description {
+  color: black;
+}

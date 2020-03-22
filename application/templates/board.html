@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"
+    />
+
+    <title>Kanban Board</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}" >
+
+    <!--link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"-->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+    <!-- Big header -->
+    <header class='header'>
+      <div class="jumbotron text-center">
+      <h1>My Kanban Board</h1>
+      <p>Welcome to your very own kanban board!</p>
+      <p>We are here to help you achieve your goals. We believe in you!</p>
+      </div>
+
+     <!-- Navigation bar to access add task and log out -->
+  		<nav class="header-nav" class="navbar navbar-dark bg-dark">
+    	      <a class="navbar-link-title" href="/board"><strong>My Kanban Board</strong></a>
+            <a class="navbar-link" href="/logout">Log out</a>
+            <a class="navbar-link" href="/add">Add a task</a>
+  		</nav>
+  	</header>
+  </head>
+
+
+<body>
+  <!-- Whole board -->
+  <div class="container">
+
+      <!-- Align the 3 category boxes -->
+      <div class="row row-eq-height">
+
+          <!-- To Do box -->
+          <div class="col-sm-4", style="background-color: #beebe9;">
+            <h3>To Do</h3>
+            {% for task in todo %}
+              <br>
+              <p class='task_title'><strong>Task: </strong>{{task.title}}</p>
+              <p class='task_description'><strong>Description: </strong>{{task.description}}</p>
+              <p class='task_created'><strong>Created: </strong>{{task.date_created}}</p>
+              <p class='task_deadline'><strong>Due: </strong>{{task.deadline}}</p>
+              <div class="right-align">
+                  <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('doing', id=task.id) }}" style='background-color:orange'>Start?</a>
+              </div>
+            {% endfor %}
+          </div>
+
+          <!-- Doing box -->
+          <div class="col-sm-4", style="background-color: #fffdf9;">
+            <h3>Doing</h3>
+            {% for task in doing %}
+              <br>
+              <p class='task_title'><strong>Task: </strong>{{task.title}}</p>
+              <p class='task_description'><strong>Description: </strong>{{task.description}}</p>
+              <p class='task_created'><strong>Created: </strong>{{task.date_created}}</p>
+              <p class='task_deadline'><strong>Due: </strong>{{task.deadline}}</p>
+              <div class="right-align">
+                  <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('done', id=task.id) }}" style='background-color:orange'>Done?</a>
+              </div>
+            {% endfor %}
+          </div>
+
+
+
+          <!-- Done box -->
+          <div class="col-sm-4", style="background-color: #ffe3ed;">
+            <h3>Done</h3>
+            {% for task in done %}
+              <br>
+              <p class='task_title'><strong>Task: </strong>{{task.title}}</p>
+              <p class='task_description'><strong>Description: </strong>{{task.description}}</p>
+              <p class='task_created'><strong>Created: </strong>{{task.date_created}}</p>
+              <p class='task_deadline'><strong>Due: </strong>{{task.deadline}}</p>
+
+              <form method='POST' action='/delete' style='display: inline'>
+                <input type='hidden' value='{{task.title}}' name='title'>
+                <input type='submit' class="btn btn-secondary btn-sm mt-1 mb-1" value="Delete?" style='background-color:orange'>
+              </form>
+              <br>
+            {% endfor %}
+          </div>
+
+
+
+    </div>
+
+
+
+  </div>
+</body>
+
+</html>
