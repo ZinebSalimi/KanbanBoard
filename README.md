@@ -20,25 +20,36 @@ $ brew install python3
 ```
 
 2. Install virutalenv
+```
 $ pip3 install virtualenv
+```
 OR 
+```
 $ python3 -m venv venv
+```
 
 4. Activate virtualenv
+```
 $ source venv/bin/activate
+```
 
 5. Install dependencies inside virtual environment
+```
 (venv) $ pip3 install -r requirements.txt
+```
 
 6. Deactivate virtual environment
+```
 $ deactivate
+```
 
 **Run the app**
 1. Start the server by running
-
+```
 $ export FLASK_ENV=development
 $ export FLASK_APP=web
 $ python3 -m flask run
+```
 
 Go to "localhost:5000", you should see the login page to your kanban board. Hooray!
 
