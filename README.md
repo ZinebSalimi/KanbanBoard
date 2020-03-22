@@ -11,10 +11,13 @@
 
 # Running the application on your computer
 
-** Install dependencies **
+**Install dependencies**
 
 1. Install python3 and pip3
+
+```
 $ brew install python3
+```
 
 2. Install virutalenv
 $ pip3 install virtualenv
@@ -30,7 +33,7 @@ $ source venv/bin/activate
 6. Deactivate virtual environment
 $ deactivate
 
-** Run the app **
+**Run the app**
 1. Start the server by running
 
 $ export FLASK_ENV=development
